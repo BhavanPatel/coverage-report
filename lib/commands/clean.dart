@@ -7,6 +7,9 @@ Future<void> clean({
   ArgResults results,
 }) async {
   print('Cleaning All Files... ');
-  await File(CommonConstants.reportPath).delete(recursive: true);
+  final bool exists = await File(CommonConstants.reportPath).exists();
+  if (exists) {
+    await File(CommonConstants.reportPath).delete(recursive: true);
+  }
   print('Clean Sucess! ');
 }
